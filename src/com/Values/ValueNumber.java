@@ -7,6 +7,10 @@ public class ValueNumber implements Value {
         this.value = 0;
     }
 
+    public ValueNumber(int value) {
+        this.value = value;
+    }
+
     @Override
     public Type getType() {
         return Type.Number;

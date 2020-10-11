@@ -3,7 +3,11 @@ package com.Values;
 import java.util.ArrayList;
 
 public class ValueArray implements Value {
-    ArrayList<Integer> values;
+    ArrayList<String> values;
+
+    public ValueArray() {
+        this.values = new ArrayList<>();
+    }
 
     @Override
     public Type getType() {
@@ -20,7 +24,7 @@ public class ValueArray implements Value {
         return false; //TODO
     }
 
-    public ArrayList<Integer> getValue() {
+    public ArrayList<String> getValue() {
         return values;
     }
 }

@@ -7,6 +7,10 @@ public class ValueString implements Value {
         this.value = "";
     }
 
+    public ValueString(String value) {
+        this.value = value;
+    }
+
     @Override
     public Type getType() {
         return Type.String;

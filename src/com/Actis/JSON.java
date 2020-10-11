@@ -27,7 +27,7 @@ public class JSON {
         return; //TODO
     }
 
-    public void add(String parentKey, String key, Value value) {
-        return; // TODO
+    public boolean add(String parentKey, String key, Value value) {
+        return false; // TODO
     }
 }

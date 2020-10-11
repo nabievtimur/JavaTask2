@@ -7,6 +7,10 @@ public class ValueBoolean implements Value {
         this.value = false;
     }
 
+    public ValueBoolean(boolean value) {
+        this.value = value;
+    }
+
     @Override
     public Type getType() {
         return Type.Boolean;
