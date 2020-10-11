@@ -1,8 +1,6 @@
 package com.Values;
 
 import com.Actis.Pair;
-import com.Values.Value;
-
 import java.util.HashSet;
 
 public class ValueHashSet implements Value {
@@ -11,6 +9,11 @@ public class ValueHashSet implements Value {
     @Override
     public Type getType() {
         return Type.Record;
+    }
+
+    @Override
+    public void add(Value value) {
+
     }
 
     public String toString() {

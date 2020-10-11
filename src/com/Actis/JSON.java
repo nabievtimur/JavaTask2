@@ -18,15 +18,16 @@ public class JSON {
         return ""; //TODO
     }
 
-//    public Value getValueToKey(String key) {
-//        return new Value(); // TODO
-//    }
+    public Value getValueToKey(String key) {
+        Value value = null;
+        return value; // TODO
+    }
 
     public void setValueToKey(String key, Value value) {
         return; //TODO
     }
 
-    public void add(String key, Value value) {
+    public void add(String parentKey, String key, Value value) {
         return; // TODO
     }
 }
