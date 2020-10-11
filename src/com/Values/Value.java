@@ -1,5 +1,6 @@
 package com.Values;
 
+// Содержит и обрабатывает СПЕЦИФИЧНЫЕ данные для каждого наследованного класса
 public interface Value {
     enum Type {
         Record,

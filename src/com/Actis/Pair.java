@@ -2,6 +2,7 @@ package com.Actis;
 
 import com.Values.Value;
 
+// Единица хранения пары ключ:значение ничего не знает про Value, просто "прослойка"
 public class Pair {
     private String key;
     private Value value;

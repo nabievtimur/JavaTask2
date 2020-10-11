@@ -3,6 +3,7 @@ package com.Actis;
 import com.Values.Value;
 import com.Values.ValueHashSet;
 
+// Класс для хранения всего JSON контейнера должен уметь заполняться и обрабатывать внутренне состояние JSON.
 public class JSON {
     Pair values;
 
