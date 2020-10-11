@@ -3,13 +3,22 @@ package com.Values;
 public class ValueString implements Value {
     String value;
 
-    @Override
-    public Type getType() {
-        return null;
+    ValueString() {
+        this.value = "";
     }
 
     @Override
-    public void add(Value value) {
+    public Type getType() {
+        return Type.String;
+    }
 
+    @Override
+    public boolean add(Value value) {
+        return false; //TODO
+    }
+
+    @Override
+    public boolean setValue(Value value) {
+        return false; //TODO
     }
 }

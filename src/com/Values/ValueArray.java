@@ -3,15 +3,24 @@ package com.Values;
 import java.util.ArrayList;
 
 public class ValueArray implements Value {
-    ArrayList<Value> values;
+    ArrayList<Integer> values;
 
     @Override
     public Type getType() {
-        return null;
+        return Type.Array;
     }
 
     @Override
-    public void add(Value value) {
+    public boolean add(Value value) {
+        return false; //TODO
+    }
 
+    @Override
+    public boolean setValue(Value value) {
+        return false; //TODO
+    }
+
+    public ArrayList<Integer> getValue() {
+        return values;
     }
 }

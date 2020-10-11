@@ -6,21 +6,26 @@ import java.util.HashSet;
 public class ValueHashSet implements Value {
     HashSet<Pair> records;
 
+    public ValueHashSet() {
+        this.records = new HashSet<>();
+    }
+
     @Override
     public Type getType() {
         return Type.Record;
     }
 
     @Override
-    public void add(Value value) {
+    public boolean add(Value value) {
+        return false; //TODO
+    }
 
+    @Override
+    public boolean setValue(Value value) {
+        return false; //TODO
     }
 
     public String toString() {
         return ""; //TODO
-    }
-
-    public ValueHashSet() {
-        this.records = new HashSet<>();
     }
 }

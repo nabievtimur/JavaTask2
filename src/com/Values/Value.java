@@ -11,7 +11,8 @@ public interface Value {
 
     public String toString();
     public Type getType();
-    public void add(Value value);
+    public boolean add(Value value);
+    public boolean setValue(Value value);
 }
 
 // TODO other implements Value

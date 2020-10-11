@@ -3,13 +3,22 @@ package com.Values;
 public class ValueNumber implements Value {
     int value;
 
-    @Override
-    public Type getType() {
-        return null;
+    ValueNumber() {
+        this.value = 0;
     }
 
     @Override
-    public void add(Value value) {
+    public Type getType() {
+        return Type.Number;
+    }
 
+    @Override
+    public boolean add(Value value) {
+        return false; //TODO
+    }
+
+    @Override
+    public boolean setValue(Value value) {
+        return false; //TODO
     }
 }
