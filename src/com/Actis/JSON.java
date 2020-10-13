@@ -16,7 +16,7 @@ public class JSON {
     private void process_array(String key, String s) {
         Value res = new ValueArray();
         StringBuilder str = new StringBuilder(s);
-        while (!(str.toString().equals("[]")))
+        while (!(str.toString().equals("[]"))) //обрабатываем строку с массивом
         {
             char ch = str.charAt(1);
 
@@ -33,12 +33,12 @@ public class JSON {
 
             res.add(new_str);
         }
-        this.setValueToKey(key, res);
+        this.setValueToKey(key, res); //устанавливаем значение для ключа
     }
 
     private void process_string(String key, String s) {
         Value res = new ValueString(s);
-        this.setValueToKey(key, res);
+        this.setValueToKey(key, res); //устанавливаем значение для ключа
     }
 
     private void process_boolean(String key, String s) {
@@ -48,7 +48,7 @@ public class JSON {
         } else {
             res = new ValueBoolean(false);
         }
-        this.setValueToKey(key, res);
+        this.setValueToKey(key, res); //устанавливаем значение для ключа
     }
 
     private void process_int(String key, String s) {
@@ -70,7 +70,8 @@ public class JSON {
                 ch = str.charAt(1);
             }
 
-            str.deleteCharAt(1);
+            //выделяем ключ
+            str.deleteCharAt(1); 
             int index = str.indexOf(String.valueOf(ch));
             String sub_str = str.substring(1, index);
             str.delete(1, index+1);
@@ -83,12 +84,13 @@ public class JSON {
                 ch = str.charAt(1);
             }
 
+            //выделяем объект
             switch (ch) {
                 case '{': {
                     index = str.indexOf(String.valueOf('}'));
                     sub_str = str.substring(1, index+1);
                     str.delete(1, index+1);
-                    this.add(parent, new_pair_key, new ValueHashSet());
+                    this.add(parent, new_pair_key, new ValueHashSet());//добавляем новый ключ
                     process_object(new_pair_key, sub_str); //обрабатываем вложенный объект 
                     break;
                 }
@@ -96,7 +98,7 @@ public class JSON {
                     index = str.indexOf(String.valueOf(']'));
                     sub_str = str.substring(1, index+1);
                     str.delete(1, index+1);
-                    this.add(parent, new_pair_key, new ValueArray());
+                    this.add(parent, new_pair_key, new ValueArray());//добавляем новый ключ
                     process_array(new_pair_key, sub_str); //обрабатываем вложенный массив 
                     break;
                 }
@@ -104,7 +106,7 @@ public class JSON {
                     index = str.indexOf(String.valueOf('"'), 2);
                     sub_str = str.substring(2, index);
                     str.delete(1, index+1);
-                    this.add(parent, new_pair_key, new ValueString(""));
+                    this.add(parent, new_pair_key, new ValueString(""));//добавляем новый ключ
                     process_string(new_pair_key, sub_str); //обрабатываем строку
                     break;
                 }
@@ -120,7 +122,7 @@ public class JSON {
                     sub_str = str.substring(1, i);
                     str.delete(1, i+1);
                     if ((str.charAt(1) == 't') || (str.charAt(1) == 'f')){
-                        this.add(parent, new_pair_key, new ValueBoolean(true));
+                        this.add(parent, new_pair_key, new ValueBoolean(true)); //добавляем новый ключ
                         process_boolean(new_pair_key, sub_str); //обрабатываем boolean
                     } else{
                         this.add(parent, new_pair_key, new ValueNumber(0));
@@ -136,7 +138,7 @@ public class JSON {
         {
             int c; 
             StringBuilder str = new StringBuilder("");
-            //сохраняем данные их файла в строку 
+            //сохраняем данные из файла в строку 
             while((c = reader.read()) != -1){
                 if (((char)c != '\n'))
                     str.append(String.valueOf((char)c));
