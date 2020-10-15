@@ -15,11 +15,6 @@ public class ValueArray implements Value {
     }
 
     @Override
-    public boolean add(Value value) {
-        return false; //TODO
-    }
-
-    @Override
     public boolean setValue(Value value) {
         return false; //TODO
     }

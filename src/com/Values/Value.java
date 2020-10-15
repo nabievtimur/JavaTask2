@@ -12,7 +12,6 @@ public interface Value {
 
     public String toString();
     public Type getType();
-    public boolean add(Value value);
     public boolean setValue(Value value);
 }
 

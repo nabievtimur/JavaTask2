@@ -15,20 +15,29 @@ public class JSON {
         return; //TODO
     }
 
+    public String toXML() {
+        return ""; //TODO
+    }
+
     public String toString() {
         return ""; //TODO
     }
 
-    public Value getValueToKey(String key) {
+    public Value getValueByKey(String key) {
         Value value = null;
         return value; // TODO
     }
 
-    public void setValueToKey(String key, Value value) {
-        return; //TODO
+    public void addPair(String parentKey, String key, Value value) {
+        return; // TODO
     }
 
-    public boolean add(String parentKey, String key, Value value) {
-        return false; // TODO
+    public void addPair(String key, Value value) {
+        addPair("root", key, value);
+    }
+
+    public void setValueByKey(String key, Value value) {
+        // найти пару по ключу и сделать Set
+        return; //TODO
     }
 }

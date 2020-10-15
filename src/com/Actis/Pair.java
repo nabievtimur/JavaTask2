@@ -20,7 +20,11 @@ public class Pair {
         return value;
     }
 
+    public void setValue(Value value) {
+        this.value = value;
+    }
+
     public String toString() {
-        return ""; //TODO
+        return "\"" + this.key + "\": " + this.value.toString() + ",\n"; //TODO
     }
 }
