@@ -1,6 +1,6 @@
 package com.Actis;
 
-import com.Values.Value;
+import com.Values.*;
 
 // Единица хранения пары ключ:значение ничего не знает про Value, просто "прослойка"
 public class Pair {
@@ -25,6 +25,10 @@ public class Pair {
     }
 
     public String toString() {
-        return "\"" + this.key + "\": " + this.value.toString() + ",\n"; //TODO
+        return "\"" + this.key + "\": " + this.value.toString() + ",\n";
+    }
+
+    public void processString(String s){
+        this.value = new ValueHashSet(s);
     }
 }
