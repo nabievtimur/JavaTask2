@@ -12,126 +12,6 @@ public class JSON {
     public JSON() {
         this.values = new Pair("root", new ValueHashSet());
     }
-
-    private void process_array(String key, String s) {
-        Value res = new ValueArray();
-        StringBuilder str = new StringBuilder(s);
-        while (!(str.toString().equals("[]"))) //обрабатываем строку с массивом
-        {
-            char ch = str.charAt(1);
-
-            while (ch != '"') {
-                str.deleteCharAt(1);
-                ch = str.charAt(1);
-            }
-
-            str.deleteCharAt(1);
-            int index = str.indexOf(String.valueOf(ch));
-            String sub_str = str.substring(1, index);
-            str.delete(1, index+1);
-            Value new_str = new ValueString(sub_str);
-
-            res.add(new_str);
-        }
-        this.setValueToKey(key, res); //устанавливаем значение для ключа
-    }
-
-    private void process_string(String key, String s) {
-        Value res = new ValueString(s);
-        this.setValueToKey(key, res); //устанавливаем значение для ключа
-    }
-
-    private void process_boolean(String key, String s) {
-        Value res;
-        if (s.equals("true")){
-            res = new ValueBoolean(true);
-        } else {
-            res = new ValueBoolean(false);
-        }
-        this.setValueToKey(key, res); //устанавливаем значение для ключа
-    }
-
-    private void process_int(String key, String s) {
-        Value res = new ValueNumber(Integer.parseInt(s));
-        this.setValueToKey(key, res);
-    }
-
-    private void process_object(String parent, String s) {
-        StringBuilder str = new StringBuilder(s);
-        System.out.println(str);
-
-        Value set = new ValueHashSet();
-        while (!(str.toString().equals("{}"))) {
-
-            char ch = str.charAt(1);
-
-            while (ch != '"') {
-                str.deleteCharAt(1);
-                ch = str.charAt(1);
-            }
-
-            //выделяем ключ
-            str.deleteCharAt(1); 
-            int index = str.indexOf(String.valueOf(ch));
-            String sub_str = str.substring(1, index);
-            str.delete(1, index+1);
-            String new_pair_key = sub_str;
-
-            //System.out.println(sub_str);
-   
-            while ((ch == ' ') || (ch == ':')){
-                str.deleteCharAt(1);
-                ch = str.charAt(1);
-            }
-
-            //выделяем объект
-            switch (ch) {
-                case '{': {
-                    index = str.indexOf(String.valueOf('}'));
-                    sub_str = str.substring(1, index+1);
-                    str.delete(1, index+1);
-                    this.add(parent, new_pair_key, new ValueHashSet());//добавляем новый ключ
-                    process_object(new_pair_key, sub_str); //обрабатываем вложенный объект 
-                    break;
-                }
-                case '[': {
-                    index = str.indexOf(String.valueOf(']'));
-                    sub_str = str.substring(1, index+1);
-                    str.delete(1, index+1);
-                    this.add(parent, new_pair_key, new ValueArray());//добавляем новый ключ
-                    process_array(new_pair_key, sub_str); //обрабатываем вложенный массив 
-                    break;
-                }
-                case '"': {
-                    index = str.indexOf(String.valueOf('"'), 2);
-                    sub_str = str.substring(2, index);
-                    str.delete(1, index+1);
-                    this.add(parent, new_pair_key, new ValueString(""));//добавляем новый ключ
-                    process_string(new_pair_key, sub_str); //обрабатываем строку
-                    break;
-                }
-                //
-                default: {
-                    int i = 1;
-                    ch = str.charAt(i);
-                    while ((ch != ' ') && (ch != '}') && (ch != ','))
-                    {
-                        i++;
-                        ch = str.charAt(i);
-                    }
-                    sub_str = str.substring(1, i);
-                    str.delete(1, i+1);
-                    if ((str.charAt(1) == 't') || (str.charAt(1) == 'f')){
-                        this.add(parent, new_pair_key, new ValueBoolean(true)); //добавляем новый ключ
-                        process_boolean(new_pair_key, sub_str); //обрабатываем boolean
-                    } else{
-                        this.add(parent, new_pair_key, new ValueNumber(0));
-                        process_int(new_pair_key, sub_str); //обрабатываем число
-                    }
-                }
-            }
-        }
-    }
  
     public void parseFromFile(String path) {
         try(FileReader reader = new FileReader(path))
@@ -143,23 +23,19 @@ public class JSON {
                 if (((char)c != '\n'))
                     str.append(String.valueOf((char)c));
             }
-            process_object("root", str.toString()); //обрабатываем внешний объект
+            this.values.processString(str.toString()); //обрабатываем внешний объект
         }
         catch(IOException ex){
-             
             System.out.println(ex.getMessage());
         }   
-<<<<<<< HEAD
     }
 
     public String toXML() {
         return ""; //TODO
-=======
->>>>>>> 9b8f7ded4b26e97a40eae8d51b629549a4b998f8
     }
 
     public String toString() {
-        return ""; //TODO
+        return this.values.toString(); //TODO
     }
 
     public Value getValueByKey(String key) {
