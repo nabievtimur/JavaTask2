@@ -149,10 +149,13 @@ public class JSON {
              
             System.out.println(ex.getMessage());
         }   
+<<<<<<< HEAD
     }
 
     public String toXML() {
         return ""; //TODO
+=======
+>>>>>>> 9b8f7ded4b26e97a40eae8d51b629549a4b998f8
     }
 
     public String toString() {
