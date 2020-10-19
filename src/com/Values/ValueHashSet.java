@@ -104,4 +104,14 @@ public class ValueHashSet implements Value {
 
     public void addPair(String parentKey, String key, Value newValue) {
     }
+
+    public void setPair(String key,Value newValue) {
+        Iterator<Pair> iterator = records.iterator();
+        while (iterator.hasNext()) {
+            Pair iter = iterator.next();
+            if (iter.getValue().getType() == Type.Record) {
+                iter.setValue(key, newValue);
+            }
+        }
+    }
 }

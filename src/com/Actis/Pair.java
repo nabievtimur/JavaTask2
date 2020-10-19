@@ -24,6 +24,14 @@ public class Pair {
         this.value = value;
     }
 
+    public void setValue(String key,Value newValue) {
+        if (this.key == key) {
+            setValue(newValue);
+        } else {
+            ((ValueHashSet)value).setPair(key, newValue);
+        }
+    }
+
     public String toString() {
         return "\"" + this.key + "\": " + this.value.toString() + ",\n";
     }
