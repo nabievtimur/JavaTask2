@@ -31,4 +31,8 @@ public class Pair {
     public void processString(String s){
         this.value = new ValueHashSet(s);
     }
+
+    public String toXML() {
+        return "<" + this.key + ">" + this.value.toString() + "</" + this.key + ">" + "\n";
+    }
 }
