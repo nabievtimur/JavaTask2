@@ -27,4 +27,8 @@ public class Pair {
     public String toString() {
         return "\"" + this.key + "\": " + this.value.toString() + ",\n"; //TODO
     }
+
+    public String toXML() {
+        return "<" + this.key + ">" + this.value.toString() + "</" + this.key + ">" + "\n";
+    }
 }

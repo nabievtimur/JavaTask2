@@ -16,7 +16,7 @@ public class JSON {
     }
 
     public String toXML() {
-        return ""; //TODO
+        return this.values.toXML();
     }
 
     public String toString() {
