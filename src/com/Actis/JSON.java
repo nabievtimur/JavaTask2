@@ -38,6 +38,9 @@ public class JSON {
 
     public void setValueByKey(String key, Value value) {
         // найти пару по ключу и сделать Set
-        return; //TODO
+        values.setValue(key,value);
+        return;//   TODO
+
     }
+}
 }
