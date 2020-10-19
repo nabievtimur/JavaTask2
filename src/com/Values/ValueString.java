@@ -16,6 +16,11 @@ public class ValueString implements Value {
         return Type.String;
     }
 
+    @Override 
+    public String toString() {
+        return "\"" + this.value + "\"";
+    }
+
     @Override
     public boolean setValue(Value value) {
         return false; //TODO

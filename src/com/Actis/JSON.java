@@ -1,7 +1,9 @@
 package com.Actis;
 
-import com.Values.Value;
-import com.Values.ValueHashSet;
+import com.Values.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 // Класс для хранения всего JSON контейнера должен уметь заполняться и обрабатывать внутренне состояние JSON.
 public class JSON {
@@ -10,9 +12,22 @@ public class JSON {
     public JSON() {
         this.values = new Pair("root", new ValueHashSet());
     }
-
+ 
     public void parseFromFile(String path) {
-        return; //TODO
+        try(FileReader reader = new FileReader(path))
+        {
+            int c; 
+            StringBuilder str = new StringBuilder("");
+            //сохраняем данные из файла в строку 
+            while((c = reader.read()) != -1){
+                if (((char)c != '\n'))
+                    str.append(String.valueOf((char)c));
+            }
+            this.values.processString(str.toString()); //обрабатываем внешний объект
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }   
     }
 
     public String toXML() {
@@ -20,7 +35,7 @@ public class JSON {
     }
 
     public String toString() {
-        return ""; //TODO
+        return this.values.toString(); //TODO
     }
 
     public Value getValueByKey(String key) {
